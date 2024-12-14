@@ -11,21 +11,21 @@ public interface IAddressService {
     void addAddress(Address address, String username, Integer uid);
 
     //查询用户地址的抽象方法
-    List<Address> queryUserAddress(Integer uid);
+    //List<Address> queryUserAddress(Integer uid);
 
     //查询某条地址的抽象方法
-    Address queryAddressByAid(Integer aid);
+   // Address queryAddressByAid(Integer aid);
 
     //设置用户所有地址为非默认地址的抽象方法
-    int setNotDefaultAddress(Integer uid);
+    //int setNotDefaultAddress(Integer uid);
 
     //设置某个地址为默认地址的抽象方法
-    int setOneAddressDefault(Integer aid,String modifiedUser, Date modifiedTime);
+   //int setOneAddressDefault(Integer aid,String modifiedUser, Date modifiedTime);
 
     //删除某个指定地址的抽象方法
-    int deleteOneAddress(Integer aid,String modifiedUser, Date modifiedTime);
+    //int deleteOneAddress(Integer aid,String modifiedUser, Date modifiedTime);
 
     //修改某个指定地址的抽象方法
-    int updateOneAddress(Address address,String modifiedUser);
+    //int updateOneAddress(Address address,String modifiedUser);
 
 }
