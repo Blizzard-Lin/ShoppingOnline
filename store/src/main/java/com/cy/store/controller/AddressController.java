@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/address")
+@RequestMapping("/addresses")
 public class AddressController extends BaseController {
     @Autowired
     private IAddressService addressService;
 
-    @PostMapping
+
+    @RequestMapping("add_new_address")
     public JsonResult<Void> addAddress(Address address, HttpSession session){
 
         //从session中取出uid和用户名
