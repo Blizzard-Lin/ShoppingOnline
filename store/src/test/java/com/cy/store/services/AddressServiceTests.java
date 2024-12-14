@@ -1,7 +1,7 @@
 package com.cy.store.services;
 
 import com.cy.store.entity.Address;
-import com.cy.store.mapper.service.IAddressService;
+import com.cy.store.service.IAddressService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

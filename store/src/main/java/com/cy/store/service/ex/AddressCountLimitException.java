@@ -1,4 +1,4 @@
-package com.cy.store.mapper.service.ex;
+package com.cy.store.service.ex;
 /**
  * 表示用户收货地址条目数超出限制的异常
  */
