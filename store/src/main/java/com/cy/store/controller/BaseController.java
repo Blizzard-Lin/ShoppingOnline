@@ -16,7 +16,7 @@ public class BaseController {
     public JsonResult<Void> handleException(Throwable e){
         JsonResult<Void> result = new JsonResult<>(e);
         if (e instanceof AddressCountLimitException){
-            result.setStatus(7000); //表示地址数量已超限制
+            result.setStatus(4003); //表示地址数量已超限制
 
         }
         //返回异常处理结果
