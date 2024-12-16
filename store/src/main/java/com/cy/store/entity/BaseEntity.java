@@ -1,10 +1,9 @@
 package com.cy.store.entity;
 
-import java.util.Date;
 import java.io.Serializable;
-import java.util.Objects;
+import java.util.Date;
 
-
+/** 实体类的基类 */
 public class BaseEntity implements Serializable {
     private String createdUser;
     private Date createdTime;
@@ -41,18 +40,6 @@ public class BaseEntity implements Serializable {
 
     public void setModifiedTime(Date modifiedTime) {
         this.modifiedTime = modifiedTime;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof BaseEntity that)) return false;
-        return Objects.equals(getCreatedUser(), that.getCreatedUser()) && Objects.equals(getCreatedTime(), that.getCreatedTime()) && Objects.equals(getModifiedUser(), that.getModifiedUser()) && Objects.equals(getModifiedTime(), that.getModifiedTime());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getCreatedUser(), getCreatedTime(), getModifiedUser(), getModifiedTime());
     }
 
     @Override

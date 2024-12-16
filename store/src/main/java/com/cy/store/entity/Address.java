@@ -1,9 +1,9 @@
 package com.cy.store.entity;
 
-/** 收货地址数据的实体类*/
-//@Data //set、get
-public class Address extends BaseEntity{
+import java.io.Serializable;
 
+/** 收货地址数据的实体类 */
+public class Address extends BaseEntity implements Serializable {
     private Integer aid;
     private Integer uid;
     private String name;
@@ -19,7 +19,6 @@ public class Address extends BaseEntity{
     private String tel;
     private String tag;
     private Integer isDefault;
-    private Integer isDelete;
 
     public Integer getAid() {
         return aid;
@@ -141,18 +140,12 @@ public class Address extends BaseEntity{
         this.isDefault = isDefault;
     }
 
-    public Integer getIsDelete() {
-        return isDelete;
-    }
-
-    public void setIsDelete(Integer isDelete) {
-        this.isDelete = isDelete;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Address address1)) return false;
+        if (!(o instanceof Address)) return false;
+
+        Address address1 = (Address) o;
 
         if (getAid() != null ? !getAid().equals(address1.getAid()) : address1.getAid() != null) return false;
         if (getUid() != null ? !getUid().equals(address1.getUid()) : address1.getUid() != null) return false;
@@ -175,9 +168,7 @@ public class Address extends BaseEntity{
         if (getPhone() != null ? !getPhone().equals(address1.getPhone()) : address1.getPhone() != null) return false;
         if (getTel() != null ? !getTel().equals(address1.getTel()) : address1.getTel() != null) return false;
         if (getTag() != null ? !getTag().equals(address1.getTag()) : address1.getTag() != null) return false;
-        if (getIsDefault() != null ? !getIsDefault().equals(address1.getIsDefault()) : address1.getIsDefault() != null)
-            return false;
-        return getIsDelete() != null ? getIsDelete().equals(address1.getIsDelete()) : address1.getIsDelete() == null;
+        return getIsDefault() != null ? getIsDefault().equals(address1.getIsDefault()) : address1.getIsDefault() == null;
     }
 
     @Override
@@ -197,10 +188,8 @@ public class Address extends BaseEntity{
         result = 31 * result + (getTel() != null ? getTel().hashCode() : 0);
         result = 31 * result + (getTag() != null ? getTag().hashCode() : 0);
         result = 31 * result + (getIsDefault() != null ? getIsDefault().hashCode() : 0);
-        result = 31 * result + (getIsDelete() != null ? getIsDelete().hashCode() : 0);
         return result;
     }
-
 
     @Override
     public String toString() {
@@ -220,7 +209,14 @@ public class Address extends BaseEntity{
                 ", tel='" + tel + '\'' +
                 ", tag='" + tag + '\'' +
                 ", isDefault=" + isDefault +
-                ", isDelete=" + isDelete +
-                '}';
+                "} " + super.toString();
     }
 }
+
+
+
+
+
+
+
+
