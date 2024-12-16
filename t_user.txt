@@ -1,0 +1,2 @@
+"uid"	"username"	"password"	"salt"	"phone"	"email"	"gender"	"avatar"	"is_delete"	"created_user"	"created_time"	"modified_user"	"modified_time"
+"1"	"Amy"	"4D7EFC8A89E972A5C90DDF9974E1D362"	"2984FE71-5CA7-44ED-9704-B525C3790F3E"					"0"	"Amy"	"15/12/2024 23:28:04"	"Amy"	"15/12/2024 23:28:04"
