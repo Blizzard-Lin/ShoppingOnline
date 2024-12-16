@@ -9,16 +9,15 @@ import java.sql.SQLException;
 
 @SpringBootTest
 class StoreApplicationTests {
+    @Autowired
+    private DataSource dataSource;
 
-	@Autowired
-	private DataSource dataSource;
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
-	@Test
-	void getConnection() throws SQLException {
-		System.out.println(dataSource.getConnection());
-	}
-
+    @Test
+    public void getConnection() throws SQLException {
+        System.out.println(dataSource.getConnection());
+    }
 }

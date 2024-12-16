@@ -1,6 +1,6 @@
 package com.cy.store.service.ex;
 
-/**业务层的异常基类*/
+/** 业务异常的基类 */
 public class ServiceException extends RuntimeException {
     public ServiceException() {
         super();
