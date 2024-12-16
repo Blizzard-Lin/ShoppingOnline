@@ -1,25 +1,72 @@
 package com.cy.store.controller;
 
-import com.cy.store.service.ex.AddressCountLimitException;
-import com.cy.store.utils.JsonResult;
+import com.cy.store.controller.ex.*;
+import com.cy.store.service.ex.*;
+import com.cy.store.util.JsonResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import javax.servlet.http.HttpSession;
+
+/** 控制器类的基类 */
 public class BaseController {
-    //操作成功的状态码
+    /** 操作成功的状态码 */
     public static final int OK = 200;
 
     /**
-     * 1.当出现了value内的异常之一，就会将下方的方法作为新的控制器方法进行执行
-     *   因此该方法的返回值也同时是返回给前端的页面
-     * 2.此外还自动将异常对象传递到此方法的参数列表中，这里使用Throwable e来接收
-     **/
+     * 从HttpSession对象中获取uid
+     * @param session HttpSession对象
+     * @return 当前登录的用户的id
+     */
+    protected final Integer getUidFromSession(HttpSession session) {
+        return Integer.valueOf(session.getAttribute("uid").toString());
+    }
 
-    public JsonResult<Void> handleException(Throwable e){
-        JsonResult<Void> result = new JsonResult<>(e);
-        if (e instanceof AddressCountLimitException){
-            result.setStatus(4003); //表示地址数量已超限制
+    /**
+     * 从HttpSession对象中获取用户名
+     * @param session HttpSession对象
+     * @return 当前登录的用户名
+     */
+    protected final String getUsernameFromSession(HttpSession session) {
+        return session.getAttribute("username").toString();
+    }
 
+    /** @ExceptionHandler用于统一处理方法抛出的异常 */
+    @ExceptionHandler({ServiceException.class, FileUploadException.class})
+    public JsonResult<Void> handleException(Throwable e) {
+        JsonResult<Void> result = new JsonResult<Void>(e);
+        if (e instanceof UsernameDuplicateException) {
+            result.setState(4000);
+        } else if (e instanceof UserNotFoundException) {
+            result.setState(4001);
+        } else if (e instanceof PasswordNotMatchException) {
+            result.setState(4002);
+        } else if (e instanceof AddressCountLimitException) {
+            result.setState(4003);
+        } else if (e instanceof AddressNotFoundException) {
+            result.setState(4004);
+        } else if (e instanceof AccessDeniedException) {
+            result.setState(4005);
+        } else if (e instanceof ProductNotFoundException) {
+            result.setState(4006);
+        } else if (e instanceof CartNotFoundException) {
+            result.setState(4007);
+        } else if (e instanceof InsertException) {
+            result.setState(5000);
+        } else if (e instanceof UpdateException) {
+            result.setState(5001);
+        } else if (e instanceof DeleteException) {
+            result.setState(5002);
+        } else if (e instanceof FileEmptyException) {
+            result.setState(6000);
+        } else if (e instanceof FileSizeException) {
+            result.setState(6001);
+        } else if (e instanceof FileTypeException) {
+            result.setState(6002);
+        } else if (e instanceof FileStateException) {
+            result.setState(6003);
+        } else if (e instanceof FileUploadIOException) {
+            result.setState(6004);
         }
-        //返回异常处理结果
         return result;
     }
 }

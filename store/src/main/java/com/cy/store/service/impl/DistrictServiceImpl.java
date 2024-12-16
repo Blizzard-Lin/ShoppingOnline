@@ -4,28 +4,33 @@ import com.cy.store.entity.District;
 import com.cy.store.mapper.DistrictMapper;
 import com.cy.store.service.IDistrictService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
-
+/** 处理省/市/区数据的业务层实现类 */
 @Service
 public class DistrictServiceImpl implements IDistrictService {
     @Autowired
     private DistrictMapper districtMapper;
 
-    //根据父代号查询省市区信息
-    public List<District> getByParent(String parent){
-        List<District> list =districtMapper.findByParent(parent);
-        //过滤无效字段数据，提高传输效率
-        for (District ad: list) {
-            ad.setId(null);
-            ad.setParent(null);
+    @Override
+    public List<District> getByParent(String parent) {
+        List<District> list = districtMapper.findByParent(parent);
+        for (District district : list) {
+            district.setId(null);
+            district.setParent(null);
         }
         return list;
     }
 
-
+    @Override
+    public String getNameByCode(String code) {
+        return districtMapper.findNameByCode(code);
+    }
 }
+
+
+
+
+

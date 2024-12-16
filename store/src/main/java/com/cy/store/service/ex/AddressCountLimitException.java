@@ -1,14 +1,13 @@
 package com.cy.store.service.ex;
-/**
- * 表示用户收货地址条目数超出限制的异常
- */
-public class AddressCountLimitException extends SecurityException{
+
+/** 收货地址数量达到上限的异常 */
+public class AddressCountLimitException extends ServiceException {
     public AddressCountLimitException() {
         super();
     }
 
-    public AddressCountLimitException(String s) {
-        super(s);
+    public AddressCountLimitException(String message) {
+        super(message);
     }
 
     public AddressCountLimitException(String message, Throwable cause) {
@@ -19,4 +18,7 @@ public class AddressCountLimitException extends SecurityException{
         super(cause);
     }
 
+    protected AddressCountLimitException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
 }

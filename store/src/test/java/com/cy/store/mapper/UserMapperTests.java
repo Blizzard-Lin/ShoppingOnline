@@ -1,41 +1,77 @@
 package com.cy.store.mapper;
 
 import com.cy.store.entity.User;
-//import com.cy.store.mapper.UserMapper;
+import com.cy.store.mapper.UserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-//@SpringBootTest表示当前的类是一个测试类,不会随同项目一块打包
-@SpringBootTest
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-/**
- * 1.@RunWith表示启动这个单元测试类,否则这个单元测试类是不能运行的,需要传递
- * 一个参数,该参数必须是SpringRunner.class即SpringRunner的实例类型
- * 2.敲完@RunWith(SpringRunner.class)后鼠标分别放在SpringRunner和@RunWith上按alt+enter分别导入包
- * 3.单元测试类中出现的方法必须是单元测试方法
- * 4.单元测试方法的特点:必须被@Test注解修饰;返回值类型必须是void;方法的参数列表不指定任何类型;方法的访问修饰符必须是public
- */
+// @RunWith(SpringRunner.class)注解是一个测试启动器，可以加载Springboot测试注解
 @RunWith(SpringRunner.class)
+@SpringBootTest
 public class UserMapperTests {
-
     @Autowired
     private UserMapper userMapper;
 
     @Test
     public void insert() {
         User user = new User();
-        user.setUsername("张三");
+        user.setUsername("user05");
         user.setPassword("123456");
         Integer rows = userMapper.insert(user);
-        System.out.println(rows);
+        System.out.println("rows=" + rows);
     }
 
     @Test
     public void findByUsername() {
-        User user = userMapper.findByUsername("张三");
-        System.out.println(user);
+        String username = "user02";
+        User result = userMapper.findByUsername(username);
+        System.out.println(result);
+    }
+
+    @Test
+    public void updatePasswordByUid() {
+        Integer uid = 7;
+        String password = "654321";
+        String modifiedUser = "普通管理员";
+        Date modifiedTime = new Date();
+        Integer rows = userMapper.updatePasswordByUid(uid, password, modifiedUser, modifiedTime);
+        System.out.println("rows=" + rows);
+    }
+
+    @Test
+    public void findByUid() {
+        Integer uid = 7;
+        User result = userMapper.findByUid(uid);
+        System.out.println(result);
+    }
+
+    @Test
+    public void updateInfoByUid() {
+        User user = new User();
+        user.setUid(20);
+        user.setPhone("17858802222");
+        user.setEmail("admin@cy.com");
+        user.setGender(1);
+        user.setModifiedUser("系统管理员");
+        user.setModifiedTime(new Date());
+        Integer rows = userMapper.updateInfoByUid(user);
+        System.out.println("rows=" + rows);
+    }
+
+    @Test
+    public void updateAvatarByUid() {
+        Integer uid = 20;
+        String avatar = "/upload/avatar.png";
+        String modifiedUser = "超级管理员";
+        Date modifiedTime = new Date();
+        Integer rows = userMapper.updateAvatarByUid(uid, avatar, modifiedUser, modifiedTime);
+        System.err.println("rows=" + rows);
     }
 }
+
