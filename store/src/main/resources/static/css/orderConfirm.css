@@ -1,7 +1,7 @@
 /*高亮显示的*/
 .order-bar-active {
-	background-color: #4288c3;
-	color: #ffffff;
+	background-color: rgb(255 218 185);
+	color: #2A6496;
 	min-height: 30px;
 	line-height: 30px;
 	text-align: center;
@@ -19,7 +19,7 @@
 	height: 70px;
 }
 .pay-res {
-	color: #4288c3;
+	color:#2A6496;
 	font-size: 40px;
 }
 .pay-res-icon {

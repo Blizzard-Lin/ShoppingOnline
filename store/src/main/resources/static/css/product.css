@@ -25,9 +25,9 @@
 /*价格框的样式*/
 .price-bar {
 	background: #f0f9ff;
-	color: #092f97;
+	color: #FA8072;
 	padding: 8px;
-	border: 3px solid #699fd7;
+	border: 3px solid rgb(255 218 185);
 	border-radius: 3px;
 	font-size: 30px;
 	margin: 5px;
@@ -42,12 +42,12 @@
 }
 /*售后的图标*/
 .saled-icon {
-	color: #092F97;
+	color: #FA8072;
 	font-size: 25px;
 }
 /*售后的标题*/
 .saled-title {
-	color: #092F97;
+	color: #FA8072;
 	font-size: 18px;
 }
 /*售后的内容*/
